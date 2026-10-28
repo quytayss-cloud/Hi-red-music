@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b10"><meta name="description" content="HiRes Music Studio — trình phát nhạc offline và online">
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+<title>HiRes Music Studio</title>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">H<span>✦</span></div><div><b>HIRES</b><small>MUSIC STUDIO</small></div></div>
+    <div class="nav-label">THƯ VIỆN</div>
+    <button class="nav active" data-view="home">◈ <span>Tổng quan</span></button>
+    <button class="nav" data-view="library">♫ <span>Thư viện nhạc</span></button>
+    <button class="nav" data-view="youtube">▷ <span>YouTube Online</span></button>
+    <button class="nav" data-view="enhancer">✧ <span>Audio Enhancer</span></button>
+    <div class="sidebar-bottom"><div class="offline-pill"><i></i> Chế độ thiết bị</div><small>Phát nhạc từ tệp của anh<br>không cần tải lên máy chủ.</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="mobile-brand">H<span>✦</span> HIRES STUDIO</div><div class="crumb">ÂM THANH <span>/</span> <b id="pageTitle">Tổng quan</b></div><div class="top-actions"><span class="status-dot"></span><span class="status-text">LOCAL PLAYER</span><button id="screenBtn" class="icon-btn" title="Hướng dẫn nghe khi tắt màn hình">☾</button></div></header>
+    <section class="welcome"><div><div class="eyebrow">YOUR PERSONAL SOUND SPACE</div><h1>Âm thanh của riêng anh<span>.</span></h1><p>Thư giãn trong không gian âm nhạc tinh tế — từ thư viện cá nhân đến nguồn trực tuyến.</p></div><div class="sound-orb"><div class="orb-ring"></div><div class="orb-core">♫</div><div class="orb-wave"></div></div></section>
+    <section class="quick-grid">
+      <label class="quick-card import-card" for="fileInput"><span class="card-icon">＋</span><div><b>Thêm nhạc từ thiết bị</b><small>MP3, WAV, FLAC*, M4A, OGG…</small></div><span class="arrow">↗</span></label>
+      <button class="quick-card" id="youtubeShortcut"><span class="card-icon play-icon">▷</span><div><b>Nghe từ YouTube</b><small>Mở trình phát trực tuyến</small></div><span class="arrow">↗</span></button>
+      <button class="quick-card" id="enhanceShortcut"><span class="card-icon sparkle">✧</span><div><b>Nâng chất âm</b><small>Phân tích & xử lý âm thanh</small></div><span class="arrow">↗</span></button>
+    </section>
+    <section class="content-grid">
+      <div class="panel playlist-panel">
+        <div class="panel-heading"><div><div class="eyebrow">NOW IN YOUR LIBRARY</div><h2>Danh sách phát</h2></div><button class="text-btn" id="clearQueue">Xóa danh sách</button></div>
+        <div class="table-head"><span># / BÀI HÁT</span><span>ĐỊNH DẠNG</span><span>THỜI LƯỢNG</span><span></span></div>
+        <div id="trackList" class="track-list"><div class="empty-state"><div class="empty-disc">♫</div><b>Danh sách đang trống</b><p>Thêm tệp nhạc trên điện thoại hoặc máy tính để bắt đầu.</p><label class="outline-btn" for="fileInput">＋ Chọn tệp nhạc</label></div></div>
+      </div>
+      <div class="right-column">
+        <div class="panel now-panel"><div class="panel-heading"><div><div class="eyebrow">NOW PLAYING</div><h2>Đang phát</h2></div><span class="live-label"><i></i> PLAYER</span></div><div class="album-art"><div class="art-grid"></div><div class="art-sun"></div><div class="art-note">♫</div><div class="art-caption">HI·RES<br><small>SONIC SPACE</small></div></div><div class="track-meta"><b id="nowTitle">Chưa chọn bài hát</b><span id="nowArtist">Thêm nhạc để bắt đầu hành trình</span></div><div class="progress-wrap"><span id="currentTime">0:00</span><input id="seek" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div><div class="controls"><button id="prevBtn" aria-label="Bài trước">|◀</button><button id="playBtn" class="main-play" aria-label="Phát">▶</button><button id="nextBtn" aria-label="Bài tiếp">▶|</button><button id="repeatBtn" class="mini-control" title="Lặp bài">↻</button></div><div class="volume-row"><span>◖))</span><input id="volume" type="range" min="0" max="1" step=".01" value=".8"><span id="volumeValue">80%</span></div></div>
+        <div class="panel smart-panel"><div class="smart-head"><div class="smart-icon">✧</div><div><b>Smart Audio</b><small>Xử lý âm thanh trên thiết bị</small></div><span class="beta">BETA</span></div><p>Phân tích mức tín hiệu và tinh chỉnh EQ, độ động để âm thanh rõ ràng, cân bằng hơn.</p><button class="wide-btn" id="smartToggle">Bật nâng chất âm <span>→</span></button><small class="disclaimer">Không thể khôi phục chi tiết đã mất hoặc biến nguồn nén thành Hi-Res thật.</small></div>
+      </div>
+    </section>
+    <section id="youtubeSection" class="panel youtube-panel hidden"><div class="panel-heading"><div><div class="eyebrow">ONLINE LISTENING</div><h2>YouTube Studio</h2></div><span class="live-label"><i></i> ONLINE</span></div><p class="muted">Tìm kiếm trên YouTube hoặc dán liên kết video để nghe trực tiếp trong trình phát nhúng.</p><div class="search-row"><input id="ytQuery" placeholder="Tìm tên bài hát / ca sĩ trên YouTube"><button id="ytSearch">Tìm trên YouTube ↗</button></div><div class="search-row"><input id="ytUrl" placeholder="Dán liên kết YouTube tại đây"><button id="ytLoad">Phát video</button></div><div id="ytPlayer" class="yt-player"><div class="yt-placeholder">▷<span>Video sẽ xuất hiện tại đây</span></div></div><p class="fine-print">YouTube được phát bằng trình phát chính thức. Trình duyệt không cho phép ứng dụng lấy luồng âm thanh YouTube để xử lý EQ trực tiếp hoặc tải video/nhạc từ đó.</p></section>
+    <section id="enhancerSection" class="panel enhancer-panel hidden"><div class="panel-heading"><div><div class="eyebrow">ON-DEVICE AUDIO PROCESSING</div><h2>Audio Enhancer</h2></div><span class="beta">LOCAL DSP</span></div><div class="enhancer-layout"><div><h3>Chế độ xử lý</h3><div class="preset-list"><button class="preset selected" data-preset="balanced"><b>◉ Cân bằng</b><small>EQ nhẹ, âm thanh tự nhiên</small></button><button class="preset" data-preset="vocal"><b>♬ Giọng hát rõ</b><small>Làm nổi dải trung và lời ca</small></button><button class="preset" data-preset="bass"><b>◖ Bass sâu</b><small>Tăng cảm nhận dải trầm</small></button><button class="preset" data-preset="bright"><b>✧ Chi tiết sáng</b><small>Tăng nhẹ dải cao</small></button></div></div><div class="analysis-card"><div class="eyebrow">SIGNAL ANALYSIS</div><div class="meter"><div id="meterFill"></div></div><div class="meter-labels"><span>Mức tín hiệu</span><b id="signalLabel">Chờ phát nhạc</b></div><div class="stat-row"><div><small>EQ</small><b id="eqState">Flat</b></div><div><small>LIMITER</small><b>Soft</b></div><div><small>MODE</small><b>Real-time</b></div></div><p class="fine-print">Các chế độ là xử lý DSP bằng Web Audio API, không phải mô hình AI tạo sinh hay chứng nhận Hi-Res. Hiệu quả phụ thuộc tệp gốc, thiết bị và tai nghe.</p></div></div></section>
+    <footer>HIRES MUSIC STUDIO <span>•</span> PRIVATE BY DESIGN <span>•</span> Âm thanh xử lý trực tiếp trên thiết bị</footer>
+  </main>
+</div>
+<input id="fileInput" type="file" accept="audio/*,.flac,.wav,.mp3,.m4a,.ogg,.opus,.aac,.aiff" multiple hidden>
+<audio id="audio" preload="metadata"></audio>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>

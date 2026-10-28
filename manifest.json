@@ -1,0 +1,11 @@
+{
+  "name": "HiRes Music Studio",
+  "short_name": "HiRes Studio",
+  "description": "Trình phát nhạc offline và online",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090b10",
+  "theme_color": "#090b10",
+  "icons": []
+}
